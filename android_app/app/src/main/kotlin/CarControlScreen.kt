@@ -1,9 +1,10 @@
-rpackage com.example.carremote.ui
+package com.example.carremote.ui
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.*
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -19,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.carremote.data.CarDevice
 import com.example.carremote.network.CarApiClient
@@ -188,7 +190,7 @@ fun CarControlScreen(
                     text = it,
                     color = MaterialTheme.colorScheme.error,
                     style = MaterialTheme.typography.bodyMedium,
-                    textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                    textAlign = TextAlign.Center
                 )
             }
         }
@@ -196,8 +198,8 @@ fun CarControlScreen(
 }
 
 @Composable
-private fun Modifier.clickableNoRipple(onClick: () -> Unit): Modifier = androidx.compose.foundation.clickable(
+private fun Modifier.clickableNoRipple(onClick: () -> Unit): Modifier = this.clickable(
     indication = null,
-    interactionSource = remember { androidx.compose.foundation.interaction.MutableInteractionSource() },
+    interactionSource = remember { MutableInteractionSource() },
     onClick = onClick
 )
